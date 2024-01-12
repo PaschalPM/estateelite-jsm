@@ -1,3 +1,9 @@
+import { Box, Flex, Spinner } from "@chakra-ui/react";
+
 export default function loading() {
-  return <div>loading</div>;
+  return (
+    <Flex w={"100%"} top={"0"} justifyContent={"center"} p="2">
+      <Spinner />
+    </Flex>
+  );
 }
