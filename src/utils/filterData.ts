@@ -147,7 +147,7 @@ export type FilterValues = {
   locationExternalIDs?: string;
 };
 
-export const getFilterValues = (filterValues:FilterValues) => {
+export const getFilterValues = (filterValues: FilterValues) => {
   const {
     purpose,
     rentFrequency,

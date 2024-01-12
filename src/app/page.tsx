@@ -30,7 +30,7 @@ const Banner = ({
     alignItems={"center"}
     m={"10"}
   >
-    <Image src={imageUrl} width={500} height={300} alt="banner" priority/>
+    <Image src={imageUrl} width={500} height={300} alt="banner" priority />
     <Box p={"5"}>
       <Text color="gray.500" fontSize={"sm"} fontWeight={"medium"}>
         {purpose}
@@ -47,22 +47,30 @@ const Banner = ({
       >
         {desc1} <br /> {desc2}
       </Text>
-      <Button fontSize={"xl"} >
+      <Button fontSize={"xl"}>
         <Link href={linkName}> {buttonText} </Link>
       </Button>
     </Box>
   </Flex>
 );
 export default async function Home() {
-  const propertyForSaleData: any = await fetchApi('/properties/list?locationExternalIDs=5002&purpose=for-sale&hitsPerPage=6')
-  const propertyForRentData: any = await fetchApi('/properties/list?locationExternalIDs=5002&purpose=for-rent&hitsPerPage=6')
+  // prettier-ignore
+  const propertyForSaleData: any = await fetchApi(
+    "/properties/list?locationExternalIDs=5002&purpose=for-sale&hitsPerPage=6"
+  );
+  // prettier-ignore
+  const propertyForRentData: any = await fetchApi(
+    "/properties/list?locationExternalIDs=5002&purpose=for-rent&hitsPerPage=6"
+  );
 
-  const [propertyForSale, propertyForRent] = await Promise.all([propertyForSaleData, propertyForRentData])
+  const [propertyForSale, propertyForRent] = await Promise.all([
+    propertyForSaleData,
+    propertyForRentData,
+  ]);
 
   return (
     <>
       <Box>
-
         <Banner
           purpose="RENT A HOME"
           title1="Rental Homes for"
@@ -73,10 +81,10 @@ export default async function Home() {
           linkName="/search?purpose=for-rent"
           imageUrl="https://bayut-production.s3.eu-central-1.amazonaws.com/image/145426814/33973352624c48628e41f2ec460faba4"
         />
-        <Flex flexWrap={'wrap'} justifyContent={"space-around"}>
-          {
-            propertyForRent.hits.map((property: any) => <Property property={property} key={property.id} />)
-          }
+        <Flex flexWrap={"wrap"} justifyContent={"space-around"}>
+          {propertyForRent.hits.map((property: any) => (
+            <Property property={property} key={property.id} />
+          ))}
         </Flex>
         <Banner
           purpose="BUY A HOME"
@@ -89,10 +97,10 @@ export default async function Home() {
           imageUrl="https://bayut-production.s3.eu-central-1.amazonaws.com/image/110993385/6a070e8e1bae4f7d8c1429bc303d2008"
         />
       </Box>
-      <Flex flexWrap={'wrap'} justifyContent={"space-around"}>
-        {
-          propertyForSale.hits.map((property: any) => <Property property={property} key={property.id} />)
-        }
+      <Flex flexWrap={"wrap"} justifyContent={"space-around"}>
+        {propertyForSale.hits.map((property: any) => (
+          <Property property={property} key={property.id} />
+        ))}
       </Flex>
     </>
   );

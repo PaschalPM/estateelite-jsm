@@ -40,7 +40,7 @@ const RightArrow = () => {
 type Props = {
   data: any[];
 };
-export default async function ImageScrollbar({ data }: Props) {
+export default function ImageScrollbar({ data }: Props) {
   return (
     <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
       {data.map((image) => (

@@ -144,9 +144,11 @@ export default async function PropertyDetailsPage({ params }: Props) {
 }
 
 export async function generateStaticParams() {
+  // prettier-ignore
   const propertyForSaleData: any = await fetchApi(
     "/properties/list?locationExternalIDs=5002&purpose=for-sale&hitsPerPage=6"
   );
+  // prettier-ignore
   const propertyForRentData: any = await fetchApi(
     "/properties/list?locationExternalIDs=5002&purpose=for-rent&hitsPerPage=6"
   );

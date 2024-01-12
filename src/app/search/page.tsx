@@ -19,7 +19,7 @@ export default async function SearchPage({ searchParams }: Props) {
   const areaMax = searchParams.areaMax || "35000";
   const locationExternalIDs = searchParams.locationExternalIDs || "5002";
   const categoryExternalID = searchParams.categoryExternalID || "4";
-
+  // prettier-ignore
   const data = await fetchApi(
     `/properties/list?locationExternalIDs=${locationExternalIDs}&purpose=${purpose}&categoryExternalID=${categoryExternalID}&bathsMin=${bathsMin}&rentFrequency=${rentFrequency}&priceMin=${minPrice}&priceMax=${maxPrice}&roomsMin=${roomsMin}&sort=${sort}&areaMax=${areaMax}`
   );
@@ -32,9 +32,10 @@ export default async function SearchPage({ searchParams }: Props) {
         Properties {searchParams.purpose}
       </Text>
       <Flex flexWrap={"wrap"} justifyContent={"space-around"}>
-        {properties && properties.map((property: any) => (
-          <Property property={property} key={property.id} />
-        ))}
+        {properties &&
+          properties.map((property: any) => (
+            <Property property={property} key={property.id} />
+          ))}
       </Flex>
       {properties && properties.length === 0 && (
         <Flex
